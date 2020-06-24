@@ -1,0 +1,214 @@
+/*
+ALINHAMENTOS, ESPAÇAMENTOS, LARGURAS E ALTURAS
+*/
+
+/*TUDO*/
+*{
+        /*  É possível usar essa propriedade para emular o comportamento dos navegadores
+     (browsers) que não suportam corretamente a especificação da propriedade CSS box
+      model.
+
+      quando eu colocar um padding ele vai aumentar de acordo com a quantidade que eu coloquei + o width
+      o box-sizing faz ele respeitar o limite da caixa
+    */
+    box-sizing: border-box;
+}
+
+
+
+/*GLOBAL*/
+html, body{
+    /*tira todo o espaçamento que o proprio navegador coloca */
+     margin: 0;
+
+}
+
+/* ESTRUTURA*/
+header, main, footer{
+    /*alinha o texto*/
+    text-align: center;
+}
+
+/*titulos*/
+header h1, main h2{
+    margin-bottom: 70px;
+}
+
+.logo{
+    width: 120px;
+    margin: 70px 0;
+}
+
+header p{
+    font-size: 14px;
+}
+
+h1,h2{
+    color: #000000cc;
+}
+
+main h2 span{
+    color:#ff4f4f;
+}
+
+.formulario h2{
+    text-align: right;
+    color: #ffffffee;
+    font-size: 18px;
+}
+
+
+body{
+    /*vai basicamente alinhar a altura da pagina inteira*/
+    display: flex;
+    flex-direction: column;
+
+    /*é baseada na altura da janela de visualização. 
+    Um valor de 1vh é igual a 1% da altura da janela de exibição*/
+    height: 100vh;
+
+         /*font*/
+         font-family: 'Roboto', sans-serif;
+
+    background-color: #f9f9f9;
+}
+
+header, .formulario, main{
+    /* espaçamentos com o margin*/
+    margin: 0 auto 70px; 
+    /* é um agrupamento para deixar melhor
+    ordem: topo, right, bottom, left*/
+
+    /*limites dos elementos na pagina*/
+    width: 90%;
+    max-width: 500px;
+
+    /*deixando no meio
+    margin-left: auto;
+    margin-right: auto;
+    */
+
+}
+
+/*HEADER*/
+
+header button{
+    margin-top: 16px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    /*vai tirar a borda padrao*/
+    border: none;
+
+    background-color: #ff4f4f;
+    color: white;
+    font-weight: bold;
+}
+
+.formulario{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    /*espaçamento*/
+    grid-gap: 45px;
+
+    background-color: #ff4f4f;
+    padding: 16px 64px;
+    border-radius: 8px;
+    align-items: center;
+}
+
+form input, form button{
+    /*vai ocupar todo o espaço que ele pode*/
+    width:100%;
+
+    /*uma separação*/
+    margin-bottom: 4px;
+    
+    /*vai fazer um preenchimento das caixas de texto e botões
+    padding: cima e baixo, direita e esquerda;
+    */
+    padding:8px 16px;
+
+    /* arredondamento de borda*/
+    border-radius: 6px;
+    border: 1px #ffffff88 solid;
+}
+
+form input{
+    background-color: transparent;
+}
+
+/*chamando o placeholder dentro do input*/
+form input::placeholder{
+    color: #ffffffaa;
+}
+
+.doadores{
+    /*cria uma tabela onde eu posso definir o tamanho da grid
+    1f: ele vai dividir igualmente essa parte*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.sangue{
+    color: #ff4f4f;
+    font-weight: bold;
+    font-size: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /*vai fazer que o before fique dentro da caixa do blood*/
+    position: relative;
+}
+
+/*adicionando um pseudoelemento no css direto no html*/
+.sangue::before{
+    content: "";
+    background-color: #ff4f4f33;
+
+    width: 40px;
+    height: 40px;
+    
+    /*criando uma nova camada para colocar em cima das letras*/
+    position: absolute;
+    
+    /*fazendo a gotinha*/
+    border-radius: 50%;
+    border-top-right-radius: 0%;
+
+    transform: rotate(-45deg);
+
+}
+
+.doador p{
+    margin: 40px 0;
+    font-size: 14px;
+}
+
+
+footer{
+    /*vai ajustar automaticamente para que o footer fique na posição
+    que ele precisa fica*/
+    margin-top: auto;
+
+    padding: 16px;
+    border: 1px #eee solid;
+}
+
+/*funcionalidades com o javascript*/
+
+section.formulario{
+    /*vai fazer uma transição no form*/
+    transition: all 300ms;
+}
+
+section.formulario.hide{
+    /*para esconder o form*/
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    margin-top: 0;
+
+}
